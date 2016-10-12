@@ -151,6 +151,8 @@ declare namespace MbaasApi {
   function push(message: any, options: PushOptions, callback?: StandardCb<any>): void;
 
   function host(callback: StandardCb<string>): void;
+
+  function mbaasExpress(): any;
 }
 
 export = MbaasApi;
