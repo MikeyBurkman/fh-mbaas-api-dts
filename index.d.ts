@@ -1,10 +1,8 @@
-import {EndCallback} from '@types/mongodb';
 // Type definitions for fh-mbaas-api 5.0.0
 // Project: https://github.com/feedhenry/fh-mbaas-api
 // Definitions by: Michael Burkman <https://github.com/MikeyBurkman>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-/*!
+/*
  * Licensed under:
  *   The MIT License (MIT)
  *
@@ -29,9 +27,6 @@ import {EndCallback} from '@types/mongodb';
  *   THE SOFTWARE.
  */
 
-type logLevel = 'silly' | 'verbose' | 'info' | 'warn' | 'debug' | 'error';
-
-type Serializable = string | number | boolean | null;
 
 type StandardCb<T> = (err?: Error|null, res?: T) => void;
 
@@ -62,15 +57,15 @@ interface DbOptions {
 }
 
 interface CacheOptions {
-  act: 'save'|'load'|'remove', 
-  key: string, 
-  value?: Serializable, 
-  expiry?: number
+  act: 'save'|'load'|'remove';
+  key: string;
+  value?: string | number | boolean | null; 
+  expiry?: number;
 }
 
 interface SyncInitOptions {
-    sync_frequency?: number;
-    logLevel?: logLevel;
+  sync_frequency?: number;
+  logLevel?: 'silly' | 'verbose' | 'info' | 'warn' | 'debug' | 'error';
 }
 
 interface SecOptions {
@@ -146,6 +141,7 @@ declare namespace MbaasApi {
     function stopAll(callback: (err?: Error|null, res?: string[]|null) => void): void;
     function handleList(dataset_id: string, callback: (dataset_id: string, params: any, cb: (err?: Error|null, res?: any) => void, meta_data: any) => void): void;
     function globalHandleList(callback: (dataset_id: string, params: any, cb: StandardCb<any>, meta_data: any) => void): void;
+    // TODO Complete this
   }
 
   function sec(options: SecOptions, callback?: StandardCb<SecResults>): void;
