@@ -147,32 +147,31 @@ declare namespace MbaasApi {
     function stop(dataset_id: string, onStop: () => void): void;
     function stopAll(onstop: StandardCb<string[]>): void;
 
-    function handleList(dataset_id: string, onList: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalHandleList(onList: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data: any) => void): void;
+    function handleList(dataset_id: string, onList: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalHandleList(onList: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data?: any) => void): void;
 
-    function handleCreate(dataset_id: string, onCreate: (dataset_id: string, data: any, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalHandleCreate(onCreate: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data: any) => void): void;
+    function handleCreate(dataset_id: string, onCreate: (dataset_id: string, data: any, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalHandleCreate(onCreate: (dataset_id: string, params: any, callback: StandardCb<any>, meta_data?: any) => void): void;
     
-    function handleRead(dataset_id: string, onRead: (dataset_id: string, uid: any, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalHandleRead(onRead: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data: any) => void): void;
+    function handleRead(dataset_id: string, onRead: (dataset_id: string, uid: any, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalHandleRead(onRead: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data?: any) => void): void;
     
-    function handleUpdate(dataset_id: string, onUpdate: (dataset_id: string, uid: string, data: any, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalHandleUpdate(onCreate: (dataset_id: string, uid: string, data: any, callback: StandardCb<any>, meta_data: any) => void): void;
+    function handleUpdate(dataset_id: string, onUpdate: (dataset_id: string, uid: string, data: any, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalHandleUpdate(onCreate: (dataset_id: string, uid: string, data: any, callback: StandardCb<any>, meta_data?: any) => void): void;
     
-    function handleDelete(dataset_id: string, onCreate: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalHandleDelete(onCreate: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data: any) => void): void;
+    function handleDelete(dataset_id: string, onCreate: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalHandleDelete(onCreate: (dataset_id: string, uid: string, callback: StandardCb<any>, meta_data?: any) => void): void;
 
     // TODO: What type is the timestamp???
-    function handleCollision(dataset_id: string, onCollision: (dataset_id: string, hash: string, timestamp: Date, uid: string, pre: any, post: any, meta_data: any) => void): void;
-    function globalHandleCollision(onCollision: (dataset_id: string, hash: string, timestamp: Date, uid: string, pre: any, post: any, meta_data: any) => void): void;
+    function handleCollision(dataset_id: string, onCollision: (dataset_id: string, hash: string, timestamp: Date, uid: string, pre: any, post: any, meta_data?: any) => void): void;
+    function globalHandleCollision(onCollision: (dataset_id: string, hash: string, timestamp: Date, uid: string, pre: any, post: any, meta_data?: any) => void): void;
     
-    // TODO: Callback actually takes an object of {string Collision}
-    function listCollisions(dataset_id: string, onList: (dataset_id: string, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalListCollisions(onList: (dataset_id: string, callback: StandardCb<any>, meta_data: any) => void): void;
+    function listCollisions(dataset_id: string, onList: (dataset_id: string, callback: StandardCb<{[hash: string]: any}>, meta_data?: any) => void): void;
+    function globalListCollisions(onList: (dataset_id: string, callback: StandardCb<{[hash: string]: any}>, meta_data?: any) => void): void;
     
     // TODO: Wtf are the callback params
-    function removeCollisions(dataset_id: string, onRemove: (dataset_id: string, collision_hash: string, callback: StandardCb<any>, meta_data: any) => void): void;
-    function globalListCollisions(onRemove: (dataset_id: string, collision_hash: string, callback: StandardCb<any>, meta_data: any) => void): void;
+    function removeCollisions(dataset_id: string, onRemove: (dataset_id: string, collision_hash: string, callback: StandardCb<any>, meta_data?: any) => void): void;
+    function globalListCollisions(onRemove: (dataset_id: string, collision_hash: string, callback: StandardCb<any>, meta_data?: any) => void): void;
     
     function interceptRequest(dataset_id: string, onIntercept: (dataset_id: string, interceptor_params: SyncInterceptParams, callback: NoRespCb) => void): void;
     function globalListCollisions(onIntercept: (dataset_id: string, interceptor_params: SyncInterceptParams, callback: NoRespCb) => void): void;
